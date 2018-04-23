@@ -27,7 +27,7 @@ public class DBAccountNumberGenerator extends AccountNumberGenerator {
 			Class.forName("org.postgresql.Driver"); 			
 			Connection connection = DriverManager.getConnection(databaseURL, username, password);
 			if (connection != null) {
-				LOGGER.log(level.INFO, "Loading account numbers from the database");
+				LOGGER.log(Level.INFO, "Loading account numbers from the database");
 				String SQL = "select a.ac_number as account_number from account a";
 				Statement stmt = connection.createStatement();
 				ResultSet rs = stmt.executeQuery(SQL);
@@ -35,7 +35,8 @@ public class DBAccountNumberGenerator extends AccountNumberGenerator {
 					list.add(rs.getString("account_number"));
 					num_acc++;
 				}
-				LOGGER.log("Number of records read: " + num_acc);
+				String snum = "Number of records read: " + Integer.toString(num_acc);
+				LOGGER.log(snum);
 				rs.close();
 				connection.close();
 			} else
