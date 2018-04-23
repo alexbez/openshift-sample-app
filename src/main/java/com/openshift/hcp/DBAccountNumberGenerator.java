@@ -36,7 +36,7 @@ public class DBAccountNumberGenerator extends AccountNumberGenerator {
 					num_acc++;
 				}
 				String snum = "Number of records read: " + Integer.toString(num_acc);
-				LOGGER.log(snum);
+				LOGGER.log(Level.INFO, snum);
 				rs.close();
 				connection.close();
 			} else
